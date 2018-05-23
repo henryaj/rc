@@ -1,4 +1,4 @@
-baseURL = "http://recurse.henrystanley.com/"
+baseURL = "https://recurse.henrystanley.com/"
 languageCode = "en-us"
 title = "Henry @ RC S1"
 theme = "natrium"
