@@ -1,6 +1,6 @@
-baseURL = "http://example.org/"
+baseURL = "http://recurse.henrystanley.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
-theme = "ananke"
+title = "Henry @ RC S1"
+theme = "natrium"
 publishDir = "docs"
 
