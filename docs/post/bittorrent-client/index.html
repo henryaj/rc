@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<title>BitTorrent clients for fun and profit - Henry @ RC S1</title>
+<meta property="og:title" content="BitTorrent clients for fun and profit - Henry @ RC S1">
+
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="http://recurse.henrystanley.com/css/main.css" media="all">
+<link rel="stylesheet" href="http://recurse.henrystanley.com/css/fonts.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="http://recurse.henrystanley.com/">
+        <svg class="rc-logo" style="max-height:25px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 15">
+          <rect class="rc-logo__primary" x="0" y="0" width="12" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="11" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="9" width="12" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="4" y="9" width="4" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="10" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="14" width="10" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="0" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="4" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="6" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="8" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="9" y="13" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="7" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="5" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="3" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__secondary" x="1" y="1" width="10" height="8" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="2" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="3" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="4" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="5" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="6" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="7" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="8" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="9" y="12" width="1" height="1" fill="#fff"></rect>
+
+          <rect class="rc-logo__primary" x="2" y="2" width="8" height="6" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__accent rc-logo__pixel1" x="2" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel2" x="4" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel3" x="6" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel4" x="3" y="5" width="2" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel5" x="6" y="5" width="2" height="1" fill="#3dc06c"></rect>
+        </svg></a>
+        <nav class="nav">
+  <a href="http://recurse.henrystanley.com/" class="nav-logo">
+    <img src="http://recurse.henrystanley.com/images/" 
+         width="" 
+         height="" 
+         alt="">
+  </a>
+
+  <ul class="nav-links">
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+  <article class="article">
+    <h1 class="article-title">BitTorrent clients for fun and profit</h1>
+    
+    <span class="article-date">2018-05-23</span>
+    
+
+    <div class="article-content">
+      
+
+<p><em>This is a work in progress.</em></p>
+
+<p>&hellip;well, not really for profit. The world doesn&rsquo;t need another BitTorrent client. But it&rsquo;s a great project for learning about an interesting web protocol, exploring the networking stack, getting to grips with Wireshark and debugging, and learning how things work.</p>
+
+<h2 id="reading-a-torrent">Reading a <code>.torrent</code></h2>
+
+<p>The torrent files you might find somewhere like The Pirate Bay are encoded with <a href="https://en.wikipedia.org/wiki/Bencode">bencode</a> (pronounced &ldquo;B-Encode&rdquo;, but I&rsquo;m still gonna say &ldquo;ben-code&rdquo;), a terse file format for representing a few simple data structures (strings, ints, dicts and lists).</p>
+
+<p>A bencoded file might look like this:</p>
+
+<pre><code>dl10:hello dave!d3:foo3:bar4:fizz4:buzzei42eee
+</code></pre>
+
+<p>Tasty. Let&rsquo;s add newlines for effect:</p>
+
+<pre><code>d
+  4:info
+  l
+    10:hello dave!
+    d
+      3:foo3:bar
+      4:fizz4:buzz
+    e
+    i42e
+  e
+e
+</code></pre>
+
+<p>Elements in a bencoded structure have a letter denoting what they are: <code>d</code> for dicts, <code>l</code> for lists, <code>i</code> for ints. All of those are terminated with a trailing <code>e</code>. Strings are a little different: they start with the length of the string, then a colon, followed by the string itself (e.g. <code>3:foo</code>).</p>
+
+<p>In the above example, the root of the structure is a dict with one key (&ldquo;info&rdquo;) whose value is a list containing a string, a dict and an int.</p>
+
+<p>Writing a decoder for this is an interesting exercise in itself; in the end, I used <a href="https://github.com/jackpal/bencode-go">jackpal/bencode-go</a>.</p>
+
+<p>Here&rsquo;s what a JSON output of this file might look like (I&rsquo;m using a Ubuntu image torrent):</p>
+
+<pre><code class="language-json">{
+    &quot;announce&quot;: &quot;http://torrent.ubuntu.com:6969/announce&quot;,
+    &quot;announce-list&quot;: [
+        [
+            &quot;http://torrent.ubuntu.com:6969/announce&quot;
+        ],
+        [
+            &quot;http://ipv6.torrent.ubuntu.com:6969/announce&quot;
+        ]
+    ],
+    &quot;comment&quot;: &quot;Ubuntu CD releases.ubuntu.com&quot;,
+    &quot;creation date&quot;: 1524776308,
+    &quot;info&quot;: {
+        &quot;length&quot;: 1921843200,
+        &quot;name&quot;: &quot;ubuntu-18.04-desktop-amd64.iso&quot;,
+        &quot;piece length&quot;: 524288,
+        &quot;pieces&quot;: &quot;\ufffd &lt;truncated&gt; \ufffd&quot;
+    }
+}
+</code></pre>
+
+<h2 id="talk-to-the-tracker">Talk to the tracker</h2>
+
+<p>Next, we need to make a request to the tracker to find some peers to connect to. The tracker URL is in the &ldquo;announce&rdquo; field of the metadata.</p>
+
+<p>When first trying this, I got an HTTP 400 and the following error:</p>
+
+<p><code>you sent me garbage - id not of length 20</code></p>
+
+<p>Damn. This tracker is so SALTY.</p>
+
+<p>Making a correct request to the tracker requires URL-encoding a bunch of params, including a SHA1 hash of the bencoded &ldquo;info&rdquo; section of the torrent metadata. The flow looks something like:</p>
+
+<ol>
+<li>de-bencode torrent metadata</li>
+<li>extract the &ldquo;announce&rdquo; address</li>
+<li>re-bencode the &ldquo;info&rdquo; block</li>
+
+<li><p>generate a random 20-byte peer ID:</p>
+
+<pre><code class="language-golang">func newClientID() []byte {
+	clientID := make([]byte, 20)
+	rand.Read(clientID)
+	return clientID
+}
+</code></pre></li>
+
+<li><p>make a GET request to the announce URL with a bunch of query params:</p>
+
+<pre><code>&quot;info_hash&quot;: &lt;bencoded, hashed &quot;info&quot; block&gt;
+&quot;peer_id&quot;:   &lt;unique peer ID&gt;
+&quot;port&quot;:      &lt;port you're listening for connection on&gt;
+&quot;uploaded&quot;:  &lt;number of bytes uploaded&gt;
+&quot;left&quot;:      &lt;number of bytes left to download&gt;
+&quot;compact&quot;:   &lt;1 if using compact mode&gt;
+&quot;event&quot;:     &lt;one of 'started', 'completed', or 'stopped'&gt;
+</code></pre></li>
+
+<li><p>de-bencode the response from the tracker, which contains a list of peers in the torrent swarm.</p></li>
+</ol>
+
+<h2 id="handshaking-with-peers">Handshaking with peers</h2>
+
+<p>Next, we have to handshake with some subset of the peers the tracker has told us about.</p>
+
+<p>We open a TCP connection to the peer, and send the following message:</p>
+
+<p><img src="/img/bittorrent_handshake.jpg" alt="Peer handshake message" /></p>
+
+<p><em>To be continued&hellip;</em></p>
+
+    </div>
+ 
+    <ul class="article-taxonomy">
+      
+    
+      
+  </article>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="http://recurse.henrystanley.com/index.xml" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> RSS feed</a>
+          </li>
+          <li>
+            <a href="https://github.com/henryaj/rc"><i class="fa fa-github"></i> Source</a>
+          </li>
+          <li>
+            <a href="http://henrystanley.com">henrystanley.com</a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
+
