@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Henry @ RC S1</title>
-    <link>http://recurse.henrystanley.com/</link>
+    <link>https://recurse.henrystanley.com/</link>
     <description>Recent content on Henry @ RC S1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 23 May 2018 16:12:18 -0400</lastBuildDate>
     
-        <atom:link href="http://recurse.henrystanley.com/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://recurse.henrystanley.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     
     <item>
       <title>BitTorrent clients for fun and profit</title>
-      <link>http://recurse.henrystanley.com/post/bittorrent-client/</link>
+      <link>https://recurse.henrystanley.com/post/bittorrent-client/</link>
       <pubDate>Wed, 23 May 2018 16:12:18 -0400</pubDate>
       
-      <guid>http://recurse.henrystanley.com/post/bittorrent-client/</guid>
+      <guid>https://recurse.henrystanley.com/post/bittorrent-client/</guid>
       <description>This is a work in progress.
 &amp;hellip;well, not really for profit. The world doesn&amp;rsquo;t need another BitTorrent client. But it&amp;rsquo;s a great project for learning about an interesting web protocol, exploring the networking stack, getting to grips with Wireshark and debugging, and learning how things work.
 Reading a .torrent The torrent files you might find somewhere like The Pirate Bay are encoded with bencode (pronounced &amp;ldquo;B-Encode&amp;rdquo;, but I&amp;rsquo;m still gonna say &amp;ldquo;ben-code&amp;rdquo;), a terse file format for representing a few simple data structures (strings, ints, dicts and lists).</description>
