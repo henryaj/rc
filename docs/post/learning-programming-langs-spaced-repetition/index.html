@@ -6,19 +6,16 @@
 <meta name="generator" content="Hugo 0.30.2" />
 
 
-<title>Henry @ RC S1</title>
-<meta property="og:title" content="Henry @ RC S1">
-<meta property="og:type" content="website">
+<title>Learning Programming Languages with Spaced Repetition - Henry @ RC S1</title>
+<meta property="og:title" content="Learning Programming Languages with Spaced Repetition - Henry @ RC S1">
 
 
 
-<meta property="description" content="">
-
+  
 
 
 
 
-<link href="https://recurse.henrystanley.com/index.xml" rel="alternate" type="application/rss+xml" title="Henry @ RC S1" />
 
 
 <link rel="stylesheet" href="https://recurse.henrystanley.com/css/main.css" media="all">
@@ -91,38 +88,69 @@
       </header>
 
 
-<main class="content">
-
-  <div class="list">
-     
-  
+<main class="content" role="main">
+  <article class="article">
+    <h1 class="article-title">Learning Programming Languages with Spaced Repetition</h1>
+    
+    <span class="article-date">2018-05-28</span>
     
 
-        <nav class="list-item">
-      <a href="https://recurse.henrystanley.com/post/spaced-repetition/">Learning Programming Languages with Spaced Repetition</a>
-      <span class="list-item-date">
-        2018-05-29
-      </span>
-    </nav>
+    <div class="article-content">
+      
 
+<p>The <a href="https://en.wikipedia.org/wiki/Spacing_effect">spacing effect</a>, whose discovery is credited to Hermann Ebbinghaus, shows that the most efficient way to learn material is to expose yourself to it at increasing intervals, instead of cramming. Spaced repetition learning uses this effect to show you flashcards at intervals optimised for knowledge retention.</p>
 
+<p>This is especially good for learning languages – it&rsquo;s how <a href="http://duolingo.com">Duolingo</a> decides when to show you old vocabulary to review. So why not use it for learning programming languages as well?</p>
+
+<p>Gwern has written an <a href="https://www.gwern.net/Spaced-repetition#using-it">excellent review of the spacing effect and spaced repetition learning</a>. He proposes this heuristic for when to commit knowledge to a flashcard:</p>
+
+<blockquote>
+<p>[D]on’t use spaced repetition if you need it sooner than 5 days or [knowing it by heart will save] less than 5 minutes.</p>
+</blockquote>
+
+<p>It&rsquo;s likely that most language features and structures are going to net you more than 5 minutes saved. Weird corner cases, little-used syntax used to impress your friends, and extremely straightforward facts about a language might not be so useful.</p>
+
+<h2 id="how-it-works">How it works</h2>
+
+<p><em>Skip this section if you&rsquo;re already familiar with spaced repetition flashcards and want to get to the how-to.</em></p>
+
+<p>In massed repetition (think cramming for a vocabulary test in French class), you might make a flashcard with two sides, like this:</p>
+
+<pre><code>    FRONT       REVERSE
+[ an apple ] [ une pomme ]
+</code></pre>
+
+<p>You&rsquo;d show one side of the card, try and recall the answer, and then flip it over to see if you got it right. Then you&rsquo;d repeat a bunch more times until it &ldquo;stuck&rdquo;, and after your test, would probably never look at the card again. This process of <em>active recall</em> strengthens the memory beyond what you&rsquo;d get if you just flicked through the flashcards without thinking.</p>
+
+<p>Spaced repetition is a bit different: you still have to challenge yourself to recall the answer, but you then put the card away and look at it again in a few minutes. After the second review, you look at it again in a few hours – and then a couple days, and then a week, and then a month, until the next review is several years away.</p>
+
+<p>Ebbinghaus managed this spacing manually, but <a href="https://apps.ankiweb.net/docs/manual.html#introduction">software exists</a> that will do it automatically, and adjust the spacing depending on how difficult you find a particular fact.</p>
+
+<p>Some facts are also really two entries: in this case, <em>apple : pomme</em> and <em>pomme : apple</em> are separate facts. Again, spaced repetition software will <a href="https://apps.ankiweb.net/docs/manual.html#reverse-cards">treat them as separate cards</a>.</p>
+
+<p>Spaced repetition learning only requires a few minutes a day (and exponentially less as the repetitions get further and further apart!), but it does require consistency. If you make it a habit, though, a couple of minutes per fact and you can retain it literally for years.</p>
+
+<h2 id="the-process">The process</h2>
+
+<p>I&rsquo;m brushing up on my <a href="https://www.rust-lang.org/en-US/documentation.html">Rust</a>. Here&rsquo;s how I made flashcards to help remember what I&rsquo;d done:</p>
+
+<ol>
+<li>Download <a href="https://apps.ankiweb.net/">Anki</a>. I&rsquo;ve already been using this for a while; there&rsquo;s also an iOS app (paid) and an Android app (free).</li>
+<li>Install the <a href="https://ankiweb.net/shared/info/162313389">Power Format Pack</a>, which gives you Markdown formatting.</li>
+<li>Create a new deck (or use the default one, and use tags to subdivide your cards).</li>
+<li>Make your first card! Here&rsquo;s a simple example:
+<img src="/img/anki-add-card.png" alt="Add a new card" /></li>
+</ol>
+
+<p>The &lsquo;Basic&rsquo; card type is fine. You can also use &lsquo;Basic (and reversed card)&rsquo; if you want Anki to generate a reverse card (in this case, one that asks <code>println!</code> and expects you to answer &ldquo;macro that prints text to the console&rdquo;).</p>
+
+    </div>
+ 
+    <ul class="article-taxonomy">
+      
     
-
-        <nav class="list-item">
-      <a href="https://recurse.henrystanley.com/post/bittorrent-client/">BitTorrent clients for fun and profit</a>
-      <span class="list-item-date">
-        2018-05-23
-      </span>
-    </nav>
-
-
-    
-    
-  </div>
-
-  
-
-
+      
+  </article>
 
 </main>
 
