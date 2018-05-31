@@ -183,7 +183,7 @@ blockquote {
 .article-content a {
   text-decoration: none;
   color: inherit;
-  border-bottom: medium solid #f0f0f0;
+  border-bottom: medium solid lightblue;
   transition: border-color 600ms;
 }
 
