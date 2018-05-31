@@ -4,7 +4,7 @@
   <article class="article">
     <h1 class="article-title">{{ .Title }}</h1>
     {{ if eq .Section "post" }}
-    <span class="article-date">{{ .Date.Format "2006-01-02" }}</span>
+    <span class="article-date">{{ .Site.Params.Author }}</span>
     {{ end }}
 
     <div class="article-content">
