@@ -8,17 +8,23 @@
     {{ end }}
 
     <div class="article-content">
+      {{ if eq .Params.toc true}}
+        <div class="toc">
+        {{ .TableOfContents }}
+        </div>
+      {{ end }}
+
       {{ .Content }}
     </div>
- 
+
     <ul class="article-taxonomy">
-      {{ if .Params.categories }}            
+      {{ if .Params.categories }}
       <hr>
       <li>
         <i class="fa fa-category"></i>{{ range $index, $category := .Params.categories }}{{ if gt $index 0 }}{{ end }}<a href="{{ "categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ end }}
       </li>
       {{ end }}
-    
+
       {{ if .Params.tags }}
       <li>
         <i class="fa fa-tags"></i>{{ range $index, $tag := .Params.tags }}{{ if gt $index 0 }}{{ end }}<a href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ end }}
