@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://recurse.henrystanley.com/post/hey-cochrane/</loc>
+    <lastmod>2018-06-05T10:33:20-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://recurse.henrystanley.com/post/better/</loc>
     <lastmod>2018-05-31T16:15:00-04:00</lastmod>
   </url>
@@ -24,13 +29,13 @@
   
   <url>
     <loc>https://recurse.henrystanley.com/</loc>
-    <lastmod>2018-05-31T16:15:00-04:00</lastmod>
+    <lastmod>2018-06-05T10:33:20-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://recurse.henrystanley.com/post/</loc>
-    <lastmod>2018-05-31T16:15:00-04:00</lastmod>
+    <lastmod>2018-06-05T10:33:20-04:00</lastmod>
     <priority>0</priority>
   </url>
   
