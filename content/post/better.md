@@ -88,7 +88,7 @@ Being able to do deep work seems to be a skill that can be learned. If I get any
   * switch your phone off so you won't be tempted to check it
   * close distracting apps on your laptop (like IM, mail, social media clients)
 
-_Leave comments on the [Hacker News thread](https://news.ycombinator.com/item?id=17208419)._
+_Leave comments on the [Hacker News thread](https://news.ycombinator.com/item?id=17286521)._
 
 [^object]: To clarify the term: if you were having a debate about a particular topic, that would be an _object-level_ debate. If you were debating the vagaries of how things ought to be debated, that would be _meta-level_.
 
