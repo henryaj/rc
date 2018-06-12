@@ -154,7 +154,7 @@ blockquote {
 
 .content {
   display: block;
-  min-height: calc(70vh);
+  min-height: calc(65vh);
   max-width: 700px;
   margin: 60px auto 80px;
   padding: 0 15px;
@@ -349,7 +349,7 @@ blockquote {
 .footer {
   height: 40px;
   margin: 0;
-  padding: 0;
+  padding-bottom: 60px;
   text-align: center;
   font-family: 'Lato', sans-serif;
 }
