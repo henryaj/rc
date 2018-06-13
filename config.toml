@@ -4,6 +4,7 @@ title = "Henry @ RC S1"
 theme = "natrium"
 publishDir = "docs"
 googleAnalytics = "UA-19413261-4"
+pygmentsCodefences = true
 
 [params]
   author = "Henry Stanley"
