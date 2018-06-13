@@ -137,28 +137,25 @@ e
 <p>Writing a decoder for this is an interesting exercise in itself; in the end, I used <a href="https://github.com/jackpal/bencode-go">jackpal/bencode-go</a>.</p>
 
 <p>Here&rsquo;s what a JSON output of this file might look like (I&rsquo;m using a Ubuntu image torrent):</p>
-
-<pre><code class="language-json">{
-    &quot;announce&quot;: &quot;http://torrent.ubuntu.com:6969/announce&quot;,
-    &quot;announce-list&quot;: [
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;announce&#34;</span>: <span style="color:#e6db74">&#34;http://torrent.ubuntu.com:6969/announce&#34;</span>,
+    <span style="color:#f92672">&#34;announce-list&#34;</span>: [
         [
-            &quot;http://torrent.ubuntu.com:6969/announce&quot;
+            <span style="color:#e6db74">&#34;http://torrent.ubuntu.com:6969/announce&#34;</span>
         ],
         [
-            &quot;http://ipv6.torrent.ubuntu.com:6969/announce&quot;
+            <span style="color:#e6db74">&#34;http://ipv6.torrent.ubuntu.com:6969/announce&#34;</span>
         ]
     ],
-    &quot;comment&quot;: &quot;Ubuntu CD releases.ubuntu.com&quot;,
-    &quot;creation date&quot;: 1524776308,
-    &quot;info&quot;: {
-        &quot;length&quot;: 1921843200,
-        &quot;name&quot;: &quot;ubuntu-18.04-desktop-amd64.iso&quot;,
-        &quot;piece length&quot;: 524288,
-        &quot;pieces&quot;: &quot;\ufffd &lt;truncated&gt; \ufffd&quot;
+    <span style="color:#f92672">&#34;comment&#34;</span>: <span style="color:#e6db74">&#34;Ubuntu CD releases.ubuntu.com&#34;</span>,
+    <span style="color:#f92672">&#34;creation date&#34;</span>: <span style="color:#ae81ff">1524776308</span>,
+    <span style="color:#f92672">&#34;info&#34;</span>: {
+        <span style="color:#f92672">&#34;length&#34;</span>: <span style="color:#ae81ff">1921843200</span>,
+        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;ubuntu-18.04-desktop-amd64.iso&#34;</span>,
+        <span style="color:#f92672">&#34;piece length&#34;</span>: <span style="color:#ae81ff">524288</span>,
+        <span style="color:#f92672">&#34;pieces&#34;</span>: <span style="color:#e6db74">&#34;\ufffd &lt;truncated&gt; \ufffd&#34;</span>
     }
-}
-</code></pre>
-
+}</code></pre></div>
 <h2 id="talk-to-the-tracker">Talk to the tracker</h2>
 
 <p>Next, we need to make a request to the tracker to find some peers to connect to. The tracker URL is in the &ldquo;announce&rdquo; field of the metadata.</p>
@@ -177,13 +174,11 @@ e
 <li>re-bencode the &ldquo;info&rdquo; block</li>
 
 <li><p>generate a random 20-byte peer ID:</p>
-
-<pre><code class="language-golang">func newClientID() []byte {
-	clientID := make([]byte, 20)
-	rand.Read(clientID)
-	return clientID
-}
-</code></pre></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">newClientID</span>() []<span style="color:#66d9ef">byte</span> {
+	<span style="color:#a6e22e">clientID</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">byte</span>, <span style="color:#ae81ff">20</span>)
+	<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Read</span>(<span style="color:#a6e22e">clientID</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">clientID</span>
+}</code></pre></div></li>
 
 <li><p>make a GET request to the announce URL with a bunch of query params:</p>
 
