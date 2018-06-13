@@ -6,9 +6,22 @@
     <description>Recent content on Henry @ RC S1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 Jun 2018 10:33:20 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 13 Jun 2018 17:00:00 -0400</lastBuildDate>
     
         <atom:link href="https://recurse.henrystanley.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>Blagging your way through d3.js</title>
+      <link>https://recurse.henrystanley.com/post/blagging-your-way-through-d3js/</link>
+      <pubDate>Wed, 13 Jun 2018 17:00:00 -0400</pubDate>
+      
+      <guid>https://recurse.henrystanley.com/post/blagging-your-way-through-d3js/</guid>
+      <description>With twelve weeks to do whatever programming projects I wanted, I figure now is the time to try something I&amp;rsquo;ve never touched before.
+Data visualisation is totally foreign to me (at least, anything beyond charts in Excel is). I was aware of d3.js, a JavaScript library for graphing data, so I thought I&amp;rsquo;d try it out.
+Turns out it&amp;rsquo;s not a &amp;ldquo;library for graphing data&amp;rdquo; at all. It&amp;rsquo;s really a DOM manipulation library, or a library for processing data and using it to update elements on a webpage.</description>
+    </item>
     
     
     

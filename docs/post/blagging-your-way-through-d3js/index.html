@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<title>Blagging your way through d3.js - Henry @ RC S1</title>
+<meta property="og:title" content="Blagging your way through d3.js - Henry @ RC S1">
+
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/main.css" media="all">
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/fonts.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="https://recurse.henrystanley.com/">
+        <svg class="rc-logo" style="max-height:25px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 15">
+          <rect class="rc-logo__primary" x="0" y="0" width="12" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="11" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="9" width="12" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="4" y="9" width="4" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="10" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="14" width="10" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="0" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="4" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="6" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="8" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="9" y="13" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="7" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="5" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="3" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__secondary" x="1" y="1" width="10" height="8" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="2" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="3" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="4" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="5" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="6" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="7" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="8" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="9" y="12" width="1" height="1" fill="#fff"></rect>
+
+          <rect class="rc-logo__primary" x="2" y="2" width="8" height="6" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__accent rc-logo__pixel1" x="2" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel2" x="4" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel3" x="6" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel4" x="3" y="5" width="2" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel5" x="6" y="5" width="2" height="1" fill="#3dc06c"></rect>
+        </svg></a>
+        <nav class="nav">
+  <a href="https://recurse.henrystanley.com/" class="nav-logo">
+    <img src="https://recurse.henrystanley.com/images/" 
+         width="" 
+         height="" 
+         alt="">
+  </a>
+
+  <ul class="nav-links">
+    
+  </ul>
+</nav>
+
+      </header>
+
+<main class="content" role="main">
+  <article class="article">
+
+      <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+    
+    <h1 class="article-title">Blagging your way through d3.js</h1>
+    
+    <span class="article-date">Henry Stanley</span>
+    
+
+    <div class="article-content">
+      
+
+      
+
+<p>With <a href="https://recurse.com">twelve weeks</a> to do whatever programming projects I wanted, I figure now is the time to try something I&rsquo;ve never touched before.</p>
+
+<p>Data visualisation is totally foreign to me (at least, anything beyond charts in Excel is). I was aware of <a href="https://d3js.org/">d3.js</a>, a JavaScript library for graphing data, so I thought I&rsquo;d try it out.</p>
+
+<p>Turns out it&rsquo;s not a &ldquo;library for graphing data&rdquo; at all. It&rsquo;s really a <em>DOM manipulation library</em>, or a library for processing data and using it to update elements on a webpage.</p>
+
+<p>That confusion was probably why I found it so damn hard to get it to actually <em>do</em> anything I wanted.</p>
+
+<h1 id="getting-started">Getting started</h1>
+
+<p>Almost always, when you&rsquo;re starting out with d3, you ask it to create an SVG element on a webpage. This becomes the canvas on which you paint everything else.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">400</span>
+
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">DOM</span>.<span style="color:#a6e22e">svg</span>(<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>))</code></pre></div>
+<p>We&rsquo;ve now bound a <a href="https://github.com/d3/d3-selection/blob/a551afef97a6955d01728c1382c2da833077fb36/src/selection/index.js#L43"><code>Selection</code></a> to the <code>svg</code> variable. <code>Selection</code> has a bunch of methods defined on it which we can use to manipulate the underlying DOM element (an <code>&lt;svg&gt;</code> HTML object, in this case).</p>
+
+<h1 id="grouping-elements">Grouping elements</h1>
+
+<p>The SVG standard defines a <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g"><code>&lt;g&gt; element</code></a>, a very boring container element used to group things together. A bit like HTML&rsquo;s <code>&lt;div&gt;</code>. You can also define attributes on a <code>&lt;g&gt;</code> tag and its child elements will inherit them.</p>
+
+<h1 id="drawing-elements">Drawing elements</h1>
+
+<p>Okay, we&rsquo;re ready to get something onto the page. Here we go:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;g&#34;</span>)     <span style="color:#75715e">// put a &lt;g&gt; element inside the &lt;svg&gt;
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;rect&#34;</span>) <span style="color:#75715e">// select all &lt;rect&gt; elements inside the &lt;g&gt;
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">data</span>([
+        {<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>},
+        {<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>},
+        {<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>},
+        {<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>},
+    ])              <span style="color:#75715e">// for this set of data points...
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">enter</span>()        <span style="color:#75715e">// when any new data points are added...
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;rect&#34;</span>) <span style="color:#75715e">// add a new &lt;g&gt; element with these attributes:
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;fill&#34;</span>, <span style="color:#e6db74">&#34;blue&#34;</span>)
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#a6e22e">xPosition</span>(<span style="color:#a6e22e">d</span>))
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;y&#34;</span>, <span style="color:#a6e22e">yPosition</span>(<span style="color:#a6e22e">d</span>))
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;width&#34;</span>, <span style="color:#ae81ff">50</span>)
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;height&#34;</span>, <span style="color:#ae81ff">50</span>)</code></pre></div>
+<p>That&rsquo;s a lot of stuff to draw some squares on a page. Let&rsquo;s break it down further.</p>
+
+<h2 id="append-selectall-and-enter">append, selectAll and enter</h2>
+
+<p>Here&rsquo;s what&rsquo;s happening in the above code snippet.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;g&#34;</span>)</code></pre></div>
+<blockquote>
+<p>This inserts a <code>&lt;g&gt;</code> element into the element represented by the caller (in this case, we&rsquo;re putting our new <code>&lt;g&gt;</code> element inside an <code>&lt;svg&gt;</code>).</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    .<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;rect&#34;</span>)</code></pre></div>
+<blockquote>
+<p>Selects all the <code>&lt;rect&gt;</code> elements inside the new <code>&lt;g&gt;</code> element. In the first instance, there won&rsquo;t be any such elements, so we get an empty list. That&rsquo;s fine.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    .<span style="color:#a6e22e">data</span>([...])</code></pre></div>
+<blockquote>
+<p>Specifies some data to work with.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    .<span style="color:#a6e22e">enter</span>()
+    .<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;rect&#34;</span>)
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;fill&#34;</span>, <span style="color:#e6db74">&#34;blue&#34;</span>)
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#a6e22e">xPosition</span>(<span style="color:#a6e22e">d</span>))
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;y&#34;</span>, <span style="color:#a6e22e">yPosition</span>(<span style="color:#a6e22e">d</span>))
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;width&#34;</span>, <span style="color:#ae81ff">50</span>)
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;height&#34;</span>, <span style="color:#ae81ff">50</span>)</code></pre></div>
+<blockquote>
+<p>And now the magic: take our data, and <em>whenever a new data point <code>.enter()</code>s the dataset</em>, append a new <code>&lt;rect&gt;</code> with properties (blue, 50 x 50, etc).</p>
+</blockquote>
+
+<p>You may have guessed that <code>.enter</code> has <code>.exit</code> and <code>.update</code> counterparts, for defining actions to take when data points leave the set or are updated.</p>
+
+<p>The thinking behind this API is that it&rsquo;s much more straightforward to <a href="https://bost.ocks.org/mike/join/">declaratively tell d3 <em>what you want</em> rather than how to render it</a>. This makes all sorts of crazy stuff trivial: live data updates, real-time charts, and interactive visualisations.</p>
+
+<h2 id="scaling-data">Scaling data</h2>
+
+<p>When we set the co-ordinates for our beautiful blue rectangles, we call <code>xPosition</code> or <code>yPosition</code> on the data point. These functions might look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">xPosition</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
+  	.<span style="color:#a6e22e">domain</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>])
+  	.<span style="color:#a6e22e">range</span>([<span style="color:#ae81ff">0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">margin</span>, <span style="color:#a6e22e">width</span><span style="color:#f92672">-</span><span style="color:#a6e22e">margin</span>]);</code></pre></div>
+<p>By calling <code>d3.scaleLinear</code>, we get a function which will take a number and scale it up or down to something more appropriate. <code>domain</code> describes the data domain, and <code>range</code> is the desired range that data should fill. Here, the domain is numbers between 1 and 4, and the range is any value that would put the <em>x</em> co-ordinate of our <code>&lt;rect&gt;</code> inside the SVG (with a little bit of padding).</p>
+
+<p><code>yPosition</code> does something similar, but for the <em>y</em> co-ordinate. SVG has a quirk, though: <em>y</em> co-ordinates go from <em>top to bottom</em> (so the top of the element is zero).</p>
+
+<h1 id="why-is-this-so-hard-i-just-want-a-pie-chart">Why is this so hard I just want a pie chart</h1>
+
+<p>The above is actually most of what you need to build something with d3 (though what I&rsquo;ve described barely scratches the surface of what&rsquo;s possible) – just don&rsquo;t expect the library to do much for you.</p>
+
+<p>In my experience, going through examples of d3 visualisations written by other people (read: <a href="https://bost.ocks.org/mike/">Mike Bostock</a>) is the best way to find inspiration.</p>
+
+<p>More concretely, you might find that the higher-level abstractions offered by some of <a href="https://github.com/wbkd/awesome-d3">these awesome libraries</a> is easier for getting started.</p>
+
+<p><em>In part 2, I&rsquo;ll write about my attempts to visualise large numbers using d3 and <a href="http://https://beta.observablehq.com/">Observable</a>.</em></p>
+
+    </div>
+
+    <ul class="article-taxonomy">
+      
+
+      
+  </article>
+
+  <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://recurse.henrystanley.com/index.xml" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> RSS feed</a>
+          </li>
+          <li>
+            <a href="https://github.com/henryaj/rc"><i class="fa fa-github"></i> Source</a>
+          </li>
+          <li>
+            <a href="mailto:henry@henrystanley.com"> Contact</a>
+          </li>
+          <li>
+            <a href="http://henrystanley.com">henrystanley.com</a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
+
