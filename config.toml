@@ -8,3 +8,4 @@ pygmentsCodefences = true
 
 [params]
   author = "Henry Stanley"
+  ogimage = "img/logo.jpg"
