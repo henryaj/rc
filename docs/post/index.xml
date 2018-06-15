@@ -6,9 +6,32 @@
     <description>Recent content in Posts on Henry @ RC S1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Jun 2018 17:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jun 2018 10:00:10 -0400</lastBuildDate>
     
         <atom:link href="https://recurse.henrystanley.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>🔗 Where We Donate and Why It Matters</title>
+      <link>https://recurse.henrystanley.com/post/where-we-donate-and-why-it-matters/</link>
+      <pubDate>Fri, 15 Jun 2018 10:00:10 -0400</pubDate>
+      
+      <guid>https://recurse.henrystanley.com/post/where-we-donate-and-why-it-matters/</guid>
+      <description>Redirecting&amp;hellip;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Scope insensitivity and d3.js</title>
+      <link>https://recurse.henrystanley.com/post/scope-insensitivity-and-d3/</link>
+      <pubDate>Fri, 15 Jun 2018 10:00:00 -0400</pubDate>
+      
+      <guid>https://recurse.henrystanley.com/post/scope-insensitivity-and-d3/</guid>
+      <description>tl;dr: Check out my Observable notebook showing how vast the scale of factory farming is.
+ Scope insensitivity is our inabiity to grasp really large numbers. When you think about the difference between a million people and a billion people, your brain can&amp;rsquo;t really represent that thousandfold difference, so it gets compressed down to being abstractly &amp;lsquo;larger&amp;rsquo;. We don&amp;rsquo;t suffer the same bias with quantities small enough to visualise.</description>
+    </item>
     
     
     
