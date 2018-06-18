@@ -1,5 +1,5 @@
 ---
-title: "🔗 Drug plasma level calculator"
+title: "🔗 Drug elimination calculator"
 date: 2018-06-18T18:19:56-04:00
 ---
 
