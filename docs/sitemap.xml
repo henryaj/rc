@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://recurse.henrystanley.com/post/physical-presence-tracking-mac-addresses/</loc>
+    <lastmod>2018-06-26T14:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://recurse.henrystanley.com/post/drug-elimination-calculator/</loc>
     <lastmod>2018-06-18T18:19:56-04:00</lastmod>
   </url>
@@ -49,13 +54,13 @@
   
   <url>
     <loc>https://recurse.henrystanley.com/</loc>
-    <lastmod>2018-06-18T18:19:56-04:00</lastmod>
+    <lastmod>2018-06-26T14:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://recurse.henrystanley.com/post/</loc>
-    <lastmod>2018-06-18T18:19:56-04:00</lastmod>
+    <lastmod>2018-06-26T14:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   

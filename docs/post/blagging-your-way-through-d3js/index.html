@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.30.2" />
+<meta name="generator" content="Hugo 0.42.1" />
 
 
 <title>Blagging your way through d3.js - Henry @ RC S1</title>
@@ -120,7 +120,8 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>
 <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">400</span>
 
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">DOM</span>.<span style="color:#a6e22e">svg</span>(<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>))</code></pre></div>
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">DOM</span>.<span style="color:#a6e22e">svg</span>(<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>))
+</code></pre></div>
 <p>We&rsquo;ve now bound a <a href="https://github.com/d3/d3-selection/blob/a551afef97a6955d01728c1382c2da833077fb36/src/selection/index.js#L43"><code>Selection</code></a> to the <code>svg</code> variable. <code>Selection</code> has a bunch of methods defined on it which we can use to manipulate the underlying DOM element (an <code>&lt;svg&gt;</code> HTML object, in this case).</p>
 
 <h1 id="grouping-elements">Grouping elements</h1>
@@ -144,21 +145,25 @@
     .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#a6e22e">xPosition</span>(<span style="color:#a6e22e">d</span>))
     .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;y&#34;</span>, <span style="color:#a6e22e">yPosition</span>(<span style="color:#a6e22e">d</span>))
     .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;width&#34;</span>, <span style="color:#ae81ff">50</span>)
-    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;height&#34;</span>, <span style="color:#ae81ff">50</span>)</code></pre></div>
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;height&#34;</span>, <span style="color:#ae81ff">50</span>)
+</code></pre></div>
 <p>That&rsquo;s a lot of stuff to draw some squares on a page. Let&rsquo;s break it down further.</p>
 
 <h2 id="append-selectall-and-enter">append, selectAll and enter</h2>
 
 <p>Here&rsquo;s what&rsquo;s happening in the above code snippet.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;g&#34;</span>)</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">svg</span>.<span style="color:#a6e22e">append</span>(<span style="color:#e6db74">&#34;g&#34;</span>)
+</code></pre></div>
 <blockquote>
 <p>This inserts a <code>&lt;g&gt;</code> element into the element represented by the caller (in this case, we&rsquo;re putting our new <code>&lt;g&gt;</code> element inside an <code>&lt;svg&gt;</code>).</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    .<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;rect&#34;</span>)</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    .<span style="color:#a6e22e">selectAll</span>(<span style="color:#e6db74">&#34;rect&#34;</span>)
+</code></pre></div>
 <blockquote>
 <p>Selects all the <code>&lt;rect&gt;</code> elements inside the new <code>&lt;g&gt;</code> element. In the first instance, there won&rsquo;t be any such elements, so we get an empty list. That&rsquo;s fine.</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    .<span style="color:#a6e22e">data</span>([...])</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    .<span style="color:#a6e22e">data</span>([...])
+</code></pre></div>
 <blockquote>
 <p>Specifies some data to work with.</p>
 </blockquote>
@@ -168,7 +173,8 @@
     .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#a6e22e">xPosition</span>(<span style="color:#a6e22e">d</span>))
     .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;y&#34;</span>, <span style="color:#a6e22e">yPosition</span>(<span style="color:#a6e22e">d</span>))
     .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;width&#34;</span>, <span style="color:#ae81ff">50</span>)
-    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;height&#34;</span>, <span style="color:#ae81ff">50</span>)</code></pre></div>
+    .<span style="color:#a6e22e">attr</span>(<span style="color:#e6db74">&#34;height&#34;</span>, <span style="color:#ae81ff">50</span>)
+</code></pre></div>
 <blockquote>
 <p>And now the magic: take our data, and <em>whenever a new data point <code>.enter()</code>s the dataset</em>, append a new <code>&lt;rect&gt;</code> with properties (blue, 50 x 50, etc).</p>
 </blockquote>
@@ -182,7 +188,8 @@
 <p>When we set the co-ordinates for our beautiful blue rectangles, we call <code>xPosition</code> or <code>yPosition</code> on the data point. These functions might look something like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">xPosition</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">scaleLinear</span>()
   	.<span style="color:#a6e22e">domain</span>([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>])
-  	.<span style="color:#a6e22e">range</span>([<span style="color:#ae81ff">0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">margin</span>, <span style="color:#a6e22e">width</span><span style="color:#f92672">-</span><span style="color:#a6e22e">margin</span>]);</code></pre></div>
+  	.<span style="color:#a6e22e">range</span>([<span style="color:#ae81ff">0</span><span style="color:#f92672">+</span><span style="color:#a6e22e">margin</span>, <span style="color:#a6e22e">width</span><span style="color:#f92672">-</span><span style="color:#a6e22e">margin</span>]);
+</code></pre></div>
 <p>By calling <code>d3.scaleLinear</code>, we get a function which will take a number and scale it up or down to something more appropriate. <code>domain</code> describes the data domain, and <code>range</code> is the desired range that data should fill. Here, the domain is numbers between 1 and 4, and the range is any value that would put the <em>x</em> co-ordinate of our <code>&lt;rect&gt;</code> inside the SVG (with a little bit of padding).</p>
 
 <p><code>yPosition</code> does something similar, but for the <em>y</em> co-ordinate. SVG has a quirk, though: <em>y</em> co-ordinates go from <em>top to bottom</em> (so the top of the element is zero).</p>

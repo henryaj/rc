@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.30.2" />
+<meta name="generator" content="Hugo 0.42.1" />
 
 
 <title>Scope insensitivity and d3.js - Henry @ RC S1</title>
@@ -151,7 +151,8 @@
 }
 
 <span style="color:#75715e">// paint a dot every 3.44ms (290 times a second)
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">interval</span>(<span style="color:#a6e22e">paintDot</span>, <span style="color:#ae81ff">3.44</span>) </code></pre></div>
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">interval</span>(<span style="color:#a6e22e">paintDot</span>, <span style="color:#ae81ff">3.44</span>) 
+</code></pre></div>
 <p>Under the hood, <code>d3.interval</code> calls <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"><code>requestAnimationFrame()</code></a>, which runs at 60fps. This isn&rsquo;t fast enough for rendering 290 objects a second; instead, I wrote functions to render multiple dots near-simultaneously with a total of 290 per second:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">paintTen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
     <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -171,7 +172,8 @@
 }
 
 <span style="color:#75715e">// paint 29 dots 10 times a second
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">interval</span>(<span style="color:#a6e22e">paint29</span>, <span style="color:#ae81ff">100</span>)</code></pre></div>
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">interval</span>(<span style="color:#a6e22e">paint29</span>, <span style="color:#ae81ff">100</span>)
+</code></pre></div>
 <p>I prototyped and published the document using <a href="https://beta.observablehq.com">Observable</a>, which is a bit like Jupyter but for HTML/JS. It has a few quirks that require getting used to, but it&rsquo;s a very powerful tool. You can have text and equations that update in real time, interactive documents with inputs that get fed into your visualisations, and of course it&rsquo;s an excellent canvas for anything you can think to build in d3.js, WebGL or a number of other web graphics libraries.</p>
 
 <p>You can see the final thing <a href="https://beta.observablehq.com/@henryaj/where-we-donate-and-why-it-matters">here</a>.</p>

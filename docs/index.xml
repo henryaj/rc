@@ -6,9 +6,21 @@
     <description>Recent content on Henry @ RC S1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jun 2018 18:19:56 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 26 Jun 2018 14:00:00 -0400</lastBuildDate>
     
         <atom:link href="https://recurse.henrystanley.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <item>
+      <title>Tracking physical presence with packet sniffing</title>
+      <link>https://recurse.henrystanley.com/post/physical-presence-tracking-mac-addresses/</link>
+      <pubDate>Tue, 26 Jun 2018 14:00:00 -0400</pubDate>
+      
+      <guid>https://recurse.henrystanley.com/post/physical-presence-tracking-mac-addresses/</guid>
+      <description>I wanted a way to see who was in the Recurse Center space at any given time – or to be able to check if people were in before deciding whether I wanted to take the L to Manhattan (on a weekend, say).
+Wi-fi is nearby I figure someone being connected to the Recurse Center Wi-Fi is a pretty good proxy for whether or not they&amp;rsquo;re in the space.</description>
+    </item>
     
     
     

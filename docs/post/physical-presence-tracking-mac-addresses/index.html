@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.42.1" />
+
+
+<title>Tracking physical presence with packet sniffing - Henry @ RC S1</title>
+<meta property="og:title" content="Tracking physical presence with packet sniffing - Henry @ RC S1">
+
+
+
+  
+
+
+
+<meta property="og:image" content="https://recurse.henrystanley.com/img/logo.jpg">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/main.css" media="all">
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/fonts.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="https://recurse.henrystanley.com/">
+        <svg class="rc-logo" style="max-height:25px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 15">
+          <rect class="rc-logo__primary" x="0" y="0" width="12" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="11" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="9" width="12" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="4" y="9" width="4" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="10" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="14" width="10" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="0" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="4" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="6" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="8" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="9" y="13" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="7" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="5" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="3" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__secondary" x="1" y="1" width="10" height="8" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="2" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="3" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="4" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="5" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="6" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="7" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="8" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="9" y="12" width="1" height="1" fill="#fff"></rect>
+
+          <rect class="rc-logo__primary" x="2" y="2" width="8" height="6" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__accent rc-logo__pixel1" x="2" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel2" x="4" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel3" x="6" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel4" x="3" y="5" width="2" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel5" x="6" y="5" width="2" height="1" fill="#3dc06c"></rect>
+        </svg></a>
+        <nav class="nav">
+  <a href="https://recurse.henrystanley.com/" class="nav-logo">
+    <img src="https://recurse.henrystanley.com/images/" 
+         width="" 
+         height="" 
+         alt="">
+  </a>
+
+  <ul class="nav-links">
+    
+  </ul>
+</nav>
+
+      </header>
+
+<main class="content" role="main">
+  <article class="article">
+
+      <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+    
+    <h1 class="article-title">Tracking physical presence with packet sniffing</h1>
+    
+    <span class="article-date">Henry Stanley</span>
+    
+
+    <div class="article-content">
+      
+
+      
+
+<p><img src="/img/rcdash.png" alt="" /></p>
+
+<p>I wanted a way to see who was in the Recurse Center space at any given time – or to be able to check if people were in before deciding whether I wanted to take the L to Manhattan (on a weekend, say).</p>
+
+<h2 id="wi-fi-is-nearby">Wi-fi is nearby</h2>
+
+<p>I figure someone being connected to the Recurse Center Wi-Fi is a pretty good proxy for whether or not they&rsquo;re in the space.</p>
+
+<p>Every packet your machine sends out has a source and destination <a href="https://en.wikipedia.org/wiki/MAC_address">MAC address</a> written into it. When you send a packet to a machine on your local network, your computer needs to figure out which machine you&rsquo;re referring to when you ask for e.g. 192.168.0.12. It does this by <a href="https://www.tummy.com/articles/networking-basics-how-arp-works/">consulting an ARP table</a>, which lists the known local machines&rsquo; MAC addresses and their corresponding IP addresses.</p>
+
+<p><img src="/img/packet.png" alt="" /></p>
+
+<p>Why are MAC addresses useful? MAC addresses don&rsquo;t change<sup class="footnote-ref" id="fnref:change-mac"><a href="#fn:change-mac">1</a></sup>, hence the moniker &ldquo;burned-in address&rdquo;. (If they changed, that ARP table wouldn&rsquo;t be very useful). Tools like <a href="https://www.wireshark.org/">Wireshark</a> let you trivially collect packets from a network you&rsquo;re connected to. If I can snoop on these packets, have a look at their sender MAC address, and tie that back to an individual, I can see who&rsquo;s in.</p>
+
+<h2 id="getting-mac-addresses">Getting MAC addresses</h2>
+
+<p>Wireshark has a command-line tool, <code>tshark</code>. I only care about the MAC addresses, not the rest of the packet, so I can set the <code>Tfields</code> flag to only return the <code>eth.addr</code> field:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ tshark -Tfields -e eth.addr
+
+Capturing on <span style="color:#e6db74">&#39;Wi-Fi&#39;</span>
+
+1a:b4:12:6f:c6:23,7c:61:cf:b7:69:15
+<span style="color:#ae81ff">50</span>:19:d6:f1:fc:0f,0a:a6:af:04:57:26
+5c:91:5d:bc:56:31,67:56:76:aa:91:55
+...</code></pre></div>
+<p>The source and destination MAC addresses are clearly visible. I still don&rsquo;t know who they belong to, though.</p>
+
+<h2 id="signing-up">Signing up</h2>
+
+<p>To tie a MAC address to a user, Recursers simply send their MAC address to this friendly bot:</p>
+
+<p><img src="/img/zulip_bot.png" alt="" /></p>
+
+<p>The payload sent to the chat bot includes the message, plus some details of the sender that Zulip provides, including their email address. I can use that to <a href="https://github.com/henryaj/rcdash/blob/698183d3340efd52dc6ca85267d25c82f3242a91/lib/auth.rb#L34-L42">look them up on the Recurse Center directory</a> to get a photo, a link to their directory page, etc. Now I know what MAC belongs to who.</p>
+
+<h2 id="who-s-in">Who&rsquo;s in?</h2>
+
+<p>With all the parts in place, I can start sniffing. A script runs on a Raspberry Pi in the RC space which sniffs MAC addresses and sends a list of seen MAC addresses to a webserver. This server looks them up against users it knows about – and if it finds any, <a href="https://github.com/henryaj/rcdash/blob/698183d3340efd52dc6ca85267d25c82f3242a91/lib/server.rb#L35-L45">it marks them as &lsquo;seen&rsquo;</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">post <span style="color:#e6db74">&#34;/macs_seen&#34;</span> <span style="color:#66d9ef">do</span>
+  body <span style="color:#f92672">=</span> <span style="color:#66d9ef">JSON</span><span style="color:#f92672">.</span>parse(request<span style="color:#f92672">.</span>body<span style="color:#f92672">.</span>read)
+  macs <span style="color:#f92672">=</span> body<span style="color:#f92672">.</span>fetch(<span style="color:#e6db74">&#34;seen&#34;</span>)
+
+  macs<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>mac<span style="color:#f92672">|</span>
+    u <span style="color:#f92672">=</span> <span style="color:#66d9ef">User</span><span style="color:#f92672">.</span>where(<span style="color:#e6db74">mac</span>: mac)
+    <span style="color:#66d9ef">if</span> u<span style="color:#f92672">.</span>any?
+      u<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>seen!
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span></code></pre></div>
+<p>From here, I can <a href="https://github.com/henryaj/rcdash/blob/698183d3340efd52dc6ca85267d25c82f3242a91/lib/user.rb#L15">grab a list of &lsquo;recently seen&rsquo; users from the database</a>&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">User</span><span style="color:#f92672">.</span>where { <span style="color:#f92672">|</span>u<span style="color:#f92672">|</span> u<span style="color:#f92672">.</span>last_seen <span style="color:#f92672">&gt;</span> ( <span style="color:#66d9ef">DateTime</span><span style="color:#f92672">.</span>now <span style="color:#f92672">-</span> <span style="color:#66d9ef">AWAY_MINS</span> ) }<span style="color:#f92672">.</span>all</code></pre></div>
+<p>&hellip;and show them on a nice web frontend (only visible to Recursers, naturally).</p>
+
+<p>Here&rsquo;s a high-level view of how the finished dashboard worked:</p>
+
+<p><img src="/img/rcdash-wireframe.png" alt="" /></p>
+
+<h2 id="addendum">Addendum</h2>
+
+<p>Unfortunately, the project proved controversial from a privacy perspective: not everyone was comfortable with their MAC address being sent to a private server. I ended up taking it offline.</p>
+
+<p>During the conversation it prompted, some interesting alternatives were proposed:</p>
+
+<ul>
+<li>hashing and salting the MAC addresses to keep them secret from the server</li>
+<li>keeping a list of &lsquo;opted-in&rsquo; MAC addresses on the Pi and only sending those over the network, not the full list</li>
+<li>having users install a daemon that registers with the site, instead of using MAC addresses</li>
+</ul>
+
+<p>I don&rsquo;t know whether I&rsquo;ll attempt to implement one of these new tracking methods, though anyone&rsquo;s welcome to <a href="https://github.com/henryaj/rcdash">peruse the source</a> and make changes.</p>
+
+<p>It should be noted, though, that MAC address sniffing is already ubiquitous. It&rsquo;s being used to <a href="https://www.theguardian.com/technology/2016/jan/21/shops-track-smartphone-uk-privacy-watchdog-warns">track footfall in stores</a>, <a href="http://www.gizmodo.co.uk/2017/02/heres-what-tfl-learned-from-tracking-your-phone-on-the-tube/">identify users&rsquo; routes on public transport</a>, and even <a href="https://www.bbc.com/news/technology-23665490">embedded in trash cans to deliver targeted advertising</a>. All of which means your MAC address is almost certainly already public knowledge.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:change-mac">Though users tend not to, MAC addresses actually <a href="https://en.wikipedia.org/wiki/MAC_spoofing">can be changed</a>. Some mobile OSes have features to automatically rotate MAC addresses to defeat tracking systems, though it&rsquo;s <a href="https://www.theregister.co.uk/2017/03/10/mac_address_randomization/">not clear that this works</a>.
+ <a class="footnote-return" href="#fnref:change-mac"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    </div>
+
+    <ul class="article-taxonomy">
+      
+
+      
+  </article>
+
+  <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://recurse.henrystanley.com/index.xml" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> RSS feed</a>
+          </li>
+          <li>
+            <a href="https://github.com/henryaj/rc"><i class="fa fa-github"></i> Source</a>
+          </li>
+          <li>
+            <a href="mailto:henry@henrystanley.com"> Contact</a>
+          </li>
+          <li>
+            <a href="http://henrystanley.com">henrystanley.com</a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
+

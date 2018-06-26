@@ -6,11 +6,20 @@
     <description>Recent content in Posts on Henry @ RC S1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jun 2018 18:19:56 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 26 Jun 2018 14:00:00 -0400</lastBuildDate>
     
-        <atom:link href="https://recurse.henrystanley.com/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://recurse.henrystanley.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Tracking physical presence with packet sniffing</title>
+      <link>https://recurse.henrystanley.com/post/physical-presence-tracking-mac-addresses/</link>
+      <pubDate>Tue, 26 Jun 2018 14:00:00 -0400</pubDate>
+      
+      <guid>https://recurse.henrystanley.com/post/physical-presence-tracking-mac-addresses/</guid>
+      <description>I wanted a way to see who was in the Recurse Center space at any given time – or to be able to check if people were in before deciding whether I wanted to take the L to Manhattan (on a weekend, say).
+Wi-fi is nearby I figure someone being connected to the Recurse Center Wi-Fi is a pretty good proxy for whether or not they&amp;rsquo;re in the space.</description>
+    </item>
     
     <item>
       <title>🔗 Drug elimination calculator</title>
@@ -21,8 +30,6 @@
       <description></description>
     </item>
     
-    
-    
     <item>
       <title>🔗 Where We Donate and Why It Matters</title>
       <link>https://recurse.henrystanley.com/post/where-we-donate-and-why-it-matters/</link>
@@ -31,8 +38,6 @@
       <guid>https://recurse.henrystanley.com/post/where-we-donate-and-why-it-matters/</guid>
       <description>Redirecting&amp;hellip;</description>
     </item>
-    
-    
     
     <item>
       <title>Scope insensitivity and d3.js</title>
@@ -43,8 +48,6 @@
       <description>tl;dr: Check out my Observable notebook showing how vast the scale of factory farming is.
  Scope insensitivity is our inabiity to grasp really large numbers. When you think about the difference between a million people and a billion people, your brain can&amp;rsquo;t really represent that thousandfold difference, so it gets compressed down to being abstractly &amp;lsquo;larger&amp;rsquo;. We don&amp;rsquo;t suffer the same bias with quantities small enough to visualise.</description>
     </item>
-    
-    
     
     <item>
       <title>Blagging your way through d3.js</title>
@@ -57,8 +60,6 @@ Data visualisation is totally foreign to me (at least, anything beyond charts in
 Turns out it&amp;rsquo;s not a &amp;ldquo;library for graphing data&amp;rdquo; at all. It&amp;rsquo;s really a DOM manipulation library, or a library for processing data and using it to update elements on a webpage.</description>
     </item>
     
-    
-    
     <item>
       <title>Hey, Cochrane - quick answers to medical questions</title>
       <link>https://recurse.henrystanley.com/post/hey-cochrane/</link>
@@ -68,8 +69,6 @@ Turns out it&amp;rsquo;s not a &amp;ldquo;library for graphing data&amp;rdquo; a
       <description>Cochrane is a body which produces meta-analyses on medical topics – basically, they pick a subject to review, trawl through all the existing scientific papers that have been published, throw away almost all of them because they&amp;rsquo;re too small, not statistically rigorous, or have some other methodological problem, and then use what&amp;rsquo;s left to make a judgement on the topic.
 Cochrane reviews are pretty much the gold standard for &amp;ldquo;truth&amp;rdquo; in medical science.</description>
     </item>
-    
-    
     
     <item>
       <title>Becoming a dramatically better programmer</title>
@@ -82,8 +81,6 @@ But what does that mean? What does getting dramatically better actually look lik
 I&amp;rsquo;ve outlined a few broad areas that programmers striving to get better might focus on. I&amp;rsquo;ve also suggested some ways to tackle these areas – but this is by no means complete, or correct!</description>
     </item>
     
-    
-    
     <item>
       <title>Learning Programming Languages with Spaced Repetition</title>
       <link>https://recurse.henrystanley.com/post/spaced-repetition/</link>
@@ -93,8 +90,6 @@ I&amp;rsquo;ve outlined a few broad areas that programmers striving to get bette
       <description>The spacing effect shows that the most efficient way to learn material is to expose yourself to it at increasing intervals, instead of cramming. Spaced repetition learning uses this effect to show you flashcards at intervals optimised for knowledge retention.
 This is especially good for learning languages – it&amp;rsquo;s how Duolingo decides when to show you old vocabulary to review. So why not use it for learning programming languages as well?</description>
     </item>
-    
-    
     
     <item>
       <title>BitTorrent clients for fun and profit</title>
@@ -106,7 +101,6 @@ This is especially good for learning languages – it&amp;rsquo;s how Duolingo 
 &amp;hellip;well, not really for profit. The world doesn&amp;rsquo;t need another BitTorrent client. But it&amp;rsquo;s a great project for learning about an interesting web protocol, exploring the networking stack, getting to grips with Wireshark and debugging, and learning how things work.
 Reading a .torrent The torrent files you might find somewhere like The Pirate Bay are encoded with bencode (pronounced &amp;ldquo;B-Encode&amp;rdquo;, but I&amp;rsquo;m still gonna say &amp;ldquo;ben-code&amp;rdquo;), a terse file format for representing a few simple data structures (strings, ints, dicts and lists).</description>
     </item>
-    
     
   </channel>
 </rss>
