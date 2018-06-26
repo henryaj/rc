@@ -70,7 +70,7 @@ User.where { |u| u.last_seen > ( DateTime.now - AWAY_MINS ) }.all
 
 ...and show them on a nice web frontend (only visible to Recursers, naturally).
 
-Here's a high-level view of how the finished dashboard worked:
+Here's a high-level view of how the finished dashboard works:
 
 ![](/img/rcdash-wireframe.png)
 
