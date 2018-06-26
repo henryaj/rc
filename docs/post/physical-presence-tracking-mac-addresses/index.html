@@ -159,7 +159,7 @@ Capturing on <span style="color:#e6db74">&#39;Wi-Fi&#39;</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">User</span><span style="color:#f92672">.</span>where { <span style="color:#f92672">|</span>u<span style="color:#f92672">|</span> u<span style="color:#f92672">.</span>last_seen <span style="color:#f92672">&gt;</span> ( <span style="color:#66d9ef">DateTime</span><span style="color:#f92672">.</span>now <span style="color:#f92672">-</span> <span style="color:#66d9ef">AWAY_MINS</span> ) }<span style="color:#f92672">.</span>all</code></pre></div>
 <p>&hellip;and show them on a nice web frontend (only visible to Recursers, naturally).</p>
 
-<p>Here&rsquo;s a high-level view of how the finished dashboard worked:</p>
+<p>Here&rsquo;s a high-level view of how the finished dashboard works:</p>
 
 <p><img src="/img/rcdash-wireframe.png" alt="" /></p>
 
