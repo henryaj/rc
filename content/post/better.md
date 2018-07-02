@@ -88,6 +88,12 @@ Being able to do deep work seems to be a skill that can be learned. If I get any
   * switch your phone off so you won't be tempted to check it
   * close distracting apps on your laptop (like IM, mail, social media clients)
 
+## Links and further reading
+
+* _[Twenty rules of formulating knowledge](https://www.supermemo.com/en/articles/20rules)_, Piotr Wozniak
+* _[Peak: Secrets from the New Science of Expertise](https://www.amazon.com/Peak-Secrets-New-Science-Expertise-ebook/dp/B011H56MKS)_, Ericsson + Pool
+* Trevor Miller's [learning routine](https://trevordmiller.com/blog/learning-routine) (including dedicated pratice and using RSS to stay up-to-date)
+
 _Leave comments on the [Hacker News thread](https://news.ycombinator.com/item?id=17286521)._
 
 [^object]: To clarify the term: if you were having a debate about a particular topic, that would be an _object-level_ debate. If you were debating the vagaries of how things ought to be debated, that would be _meta-level_.
