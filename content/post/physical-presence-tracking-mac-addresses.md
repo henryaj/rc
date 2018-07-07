@@ -84,8 +84,8 @@ During the conversation it prompted, some interesting alternatives were proposed
 * keeping a list of 'opted-in' MAC addresses on the Pi and only sending those over the network, not the full list
 * having users install a daemon that registers with the site, instead of using MAC addresses
 
-I don't know whether I'll attempt to implement one of these new tracking methods, though anyone's welcome to [peruse the source](https://github.com/henryaj/rcdash) and make changes.
-
 It should be noted, though, that MAC address sniffing is already ubiquitous. It's being used to [track footfall in stores](https://www.theguardian.com/technology/2016/jan/21/shops-track-smartphone-uk-privacy-watchdog-warns), [identify users' routes on public transport](http://www.gizmodo.co.uk/2017/02/heres-what-tfl-learned-from-tracking-your-phone-on-the-tube/), and even [embedded in trash cans to deliver targeted advertising](https://www.bbc.com/news/technology-23665490). All of which means your MAC address is almost certainly already public knowledge.
+
+**UPDATE**: I ended up modifying the sniffer to [salt and hash MAC addresses](https://github.com/henryaj/rcdash/blob/d9ba920ce3612606645c5d87dd2ad87d579eadfa/lib/mac.rb#L15-L18) before saving them or [sending them over the wire](https://github.com/henryaj/rcdash/blob/d9ba920ce3612606645c5d87dd2ad87d579eadfa/lib/sniff_mac_addresses#L37-L41) – so I can just match the salted hash without my code ever seeing a MAC address.
 
 _Leave comments on the [Hacker News thread](https://news.ycombinator.com/item?id=17403890)._
