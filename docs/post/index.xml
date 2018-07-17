@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Henry @ RC S1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Jun 2018 14:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 17 Jul 2018 13:41:00 -0400</lastBuildDate>
     
 	<atom:link href="https://recurse.henrystanley.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Multi-file wordcount – an exercise in concurrent Ruby</title>
+      <link>https://recurse.henrystanley.com/post/concurrent-ruby/</link>
+      <pubDate>Tue, 17 Jul 2018 13:41:00 -0400</pubDate>
+      
+      <guid>https://recurse.henrystanley.com/post/concurrent-ruby/</guid>
+      <description>Web frameworks have TodoMVC as a standard exercise, in which you build a little to-do list app. It&amp;rsquo;s a cute way to showcase the features of that framework and get to know it a little better.
+My friend Dan Friedman is trying to do the same but for programming languages, with concurrent-wc! It&amp;rsquo;s an exercise to build a utility that mimicks wc -l (which counts the lines in a file), but applied to a whole directory – which is a nice excuse to use some concurrency!</description>
+    </item>
     
     <item>
       <title>Tracking physical presence with packet sniffing</title>

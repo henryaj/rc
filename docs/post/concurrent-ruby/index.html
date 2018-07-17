@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.42.2" />
+
+
+<title>Multi-file wordcount – an exercise in concurrent Ruby - Henry @ RC S1</title>
+<meta property="og:title" content="Multi-file wordcount – an exercise in concurrent Ruby - Henry @ RC S1">
+
+
+
+  
+
+
+
+<meta property="og:image" content="https://recurse.henrystanley.com/img/logo.jpg">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/main.css" media="all">
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/fonts.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="https://recurse.henrystanley.com/">
+        <svg class="rc-logo" style="max-height:25px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 15">
+          <rect class="rc-logo__primary" x="0" y="0" width="12" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="11" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="9" width="12" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="4" y="9" width="4" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="10" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="14" width="10" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="0" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="4" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="6" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="8" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="9" y="13" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="7" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="5" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="3" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__secondary" x="1" y="1" width="10" height="8" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="2" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="3" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="4" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="5" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="6" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="7" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="8" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="9" y="12" width="1" height="1" fill="#fff"></rect>
+
+          <rect class="rc-logo__primary" x="2" y="2" width="8" height="6" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__accent rc-logo__pixel1" x="2" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel2" x="4" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel3" x="6" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel4" x="3" y="5" width="2" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel5" x="6" y="5" width="2" height="1" fill="#3dc06c"></rect>
+        </svg></a>
+        <nav class="nav">
+  <a href="https://recurse.henrystanley.com/" class="nav-logo">
+    <img src="https://recurse.henrystanley.com/images/" 
+         width="" 
+         height="" 
+         alt="">
+  </a>
+
+  <ul class="nav-links">
+    
+  </ul>
+</nav>
+
+      </header>
+
+<main class="content" role="main">
+  <article class="article">
+
+      <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+    
+    <h1 class="article-title">Multi-file wordcount – an exercise in concurrent Ruby</h1>
+    
+    <span class="article-date">Henry Stanley</span>
+    
+
+    <div class="article-content">
+      
+
+      
+
+<p>Web frameworks have <a href="http://todomvc.com/">TodoMVC</a> as a standard exercise, in which you build a little to-do list app. It&rsquo;s a cute way to showcase the features of that framework and get to know it a little better.</p>
+
+<p>My friend Dan Friedman is trying to do the same but for programming languages, with <a href="https://github.com/dan-f/concurrent-wc/"><code>concurrent-wc</code></a>! It&rsquo;s an exercise to build a utility that mimicks <code>wc -l</code> (which counts the lines in a file), but applied to a whole directory – which is a nice excuse to use some concurrency!</p>
+
+<p>Seeing as he and <a href="https://github.com/nicolashahn">Nick</a> had already written a Go implementation, I thought I&rsquo;d try my hand at Ruby.</p>
+
+<p>While being a lovely language, Ruby unfortunately doesn&rsquo;t have very powerful concurrency features. Don&rsquo;t expect stellar performance!</p>
+
+<h2 id="the-boring-base-case">The boring base case</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_results</span>(files, basepath)
+  results <span style="color:#f92672">=</span> {}
+
+  files<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>f<span style="color:#f92672">|</span>
+    lines <span style="color:#f92672">=</span> <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>readlines <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>join(basepath, f)
+    results<span style="color:#f92672">[</span>f<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> lines<span style="color:#f92672">.</span>length
+  <span style="color:#66d9ef">end</span>
+
+  <span style="color:#66d9ef">return</span> results
+<span style="color:#66d9ef">end</span></code></pre></div>
+<p>We loop through a list of files, sequentially reading their contents and counting the number of lines. We store that value keyed to the file&rsquo;s name in a hash.</p>
+
+<h2 id="ruby-threads">Ruby threads</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_results_green_threaded</span>(files, basepath)
+  results <span style="color:#f92672">=</span> {}
+  threads <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+  mu <span style="color:#f92672">=</span> <span style="color:#66d9ef">Mutex</span><span style="color:#f92672">.</span>new
+
+  files<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>f<span style="color:#f92672">|</span>
+    threads <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">Thread</span><span style="color:#f92672">.</span>new <span style="color:#66d9ef">do</span>
+      lines <span style="color:#f92672">=</span> <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>readlines <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>join(basepath, f)
+      mu<span style="color:#f92672">.</span>synchronize <span style="color:#66d9ef">do</span>
+        results<span style="color:#f92672">[</span>f<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> lines<span style="color:#f92672">.</span>length
+      <span style="color:#66d9ef">end</span>
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+
+  threads<span style="color:#f92672">.</span>map(<span style="color:#f92672">&amp;</span><span style="color:#e6db74">:join</span>)
+
+  <span style="color:#66d9ef">return</span> results
+<span style="color:#66d9ef">end</span></code></pre></div>
+<p>The <code>Thread</code> primitive in Ruby is confusing. Prior to Ruby 1.9, these were &ldquo;green threads&rdquo;, meaning the Ruby VM runs them in a single native thread, onto which it multiplexes the execution of these pretend threads.</p>
+
+<p>However, as of Ruby 1.9 (we&rsquo;re on 2.4.something at the moment), <a href="https://csinaction.com/2014/10/10/multithreading-in-the-mri-ruby-interpreter/"><code>Thread</code> actually creates a real, native OS thread</a>. <em>However</em>: these threads don&rsquo;t actually run concurrently (even if they do exist in parallel) because the Ruby VM holds a Global VM Lock (GVL) which ensures only one thread is active at once.</p>
+
+<p>So this isn&rsquo;t likely to give us much of a speedup.</p>
+
+<h2 id="native-os-threads">Native (OS) threads</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_results_system_threads</span>(files, basepath)
+  results <span style="color:#f92672">=</span> {}
+
+  reader, writer <span style="color:#f92672">=</span> <span style="color:#66d9ef">IO</span><span style="color:#f92672">.</span>pipe
+
+  files<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>f<span style="color:#f92672">|</span>
+    fork <span style="color:#66d9ef">do</span>
+      reader<span style="color:#f92672">.</span>close <span style="color:#75715e"># we aren&#39;t using the reader pipe inside the forked process</span>
+
+      lines <span style="color:#f92672">=</span> <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>readlines <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>join(basepath, f)
+      writer<span style="color:#f92672">.</span>puts lines<span style="color:#f92672">.</span>length<span style="color:#f92672">.</span>to_s <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;§&#34;</span> <span style="color:#f92672">+</span> f
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+
+  writer<span style="color:#f92672">.</span>close
+  <span style="color:#66d9ef">while</span> msg <span style="color:#f92672">=</span> reader<span style="color:#f92672">.</span>gets
+    length, f <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;§&#34;</span>)
+    results<span style="color:#f92672">[</span>f<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> length
+  <span style="color:#66d9ef">end</span>
+
+  <span style="color:#66d9ef">Process</span><span style="color:#f92672">.</span>waitall
+
+  <span style="color:#66d9ef">return</span> results
+<span style="color:#66d9ef">end</span></code></pre></div>
+<p>It gets a bit gnarly here.</p>
+
+<p>We&rsquo;re doing much the same as before, but instead of calling <code>Thread.new</code>, we call <code>fork</code>. At that point in the code, an entirely new process is made, bringing with it a copy of the Ruby VM.</p>
+
+<p>Once we&rsquo;re inside the <code>fork</code> block, we&rsquo;re running in a totally separate process from the parent. As we&rsquo;re not sharing the memory of the parent at all, we can&rsquo;t just write to a hash – the child process has <em>its own copy</em> of that hash, so there&rsquo;s no way for the parent to know what updates it&rsquo;s making.</p>
+
+<p>Instead, we have to use inter-process communication. Here, I open a UNIX pipe, have each process write their result to it, and read from the pipe until it&rsquo;s drained.</p>
+
+<h2 id="performance">Performance</h2>
+
+<pre><code>$ ruby test.rb ~/Desktop
+---
+System threads and socket IPC - 0.437s
+Green threads - 0.460s
+Base case - 0.351s
+</code></pre>
+
+<p>Yeah. Not a huge win for Ruby&rsquo;s concurrency primitives here. The added overhead of green threads and native OS threads outweighs any concurrency gain, it seems.</p>
+
+<p>However: the native threaded version can be tweaked a bit. Spawning a new thread for each file we want to parse doesn&rsquo;t make sense. Can we just make a small number of threads, one for each core of the machine&rsquo;s processor, and assign work to those threads dynamically, like <a href="https://en.wikipedia.org/wiki/Coroutine">coroutines</a>?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_results_threadpool</span>(files, basepath)
+  require <span style="color:#e6db74">&#39;socket&#39;</span>
+  results <span style="color:#f92672">=</span> {}
+  sockets <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+  threads <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+
+  <span style="color:#ae81ff">4</span><span style="color:#f92672">.</span>times { sockets <span style="color:#f92672">&lt;&lt;</span> create_socket_slave(basepath) }
+
+  socket_pool <span style="color:#f92672">=</span> <span style="color:#66d9ef">Enumerator</span><span style="color:#f92672">.</span>new <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>y<span style="color:#f92672">|</span>
+    <span style="color:#66d9ef">loop</span> <span style="color:#66d9ef">do</span>
+      y <span style="color:#f92672">&lt;&lt;</span> sockets<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span>
+      y <span style="color:#f92672">&lt;&lt;</span> sockets<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+      y <span style="color:#f92672">&lt;&lt;</span> sockets<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">]</span>
+      y <span style="color:#f92672">&lt;&lt;</span> sockets<span style="color:#f92672">[</span><span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+
+  threads <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">Thread</span><span style="color:#f92672">.</span>new {
+    files<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>f<span style="color:#f92672">|</span>
+      socket_pool<span style="color:#f92672">.</span>take(<span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>send(f, <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">end</span>
+
+    socket_pool<span style="color:#f92672">.</span>take(<span style="color:#ae81ff">4</span>)<span style="color:#f92672">.</span>map { <span style="color:#f92672">|</span>s<span style="color:#f92672">|</span> s<span style="color:#f92672">.</span>send(<span style="color:#e6db74">&#34;BREAK&#34;</span>, <span style="color:#ae81ff">0</span>)}
+  }
+
+  threads <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">Thread</span><span style="color:#f92672">.</span>new {
+    files<span style="color:#f92672">.</span>length<span style="color:#f92672">.</span>times <span style="color:#66d9ef">do</span>
+      msg <span style="color:#f92672">=</span> socket_pool<span style="color:#f92672">.</span>take(<span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">500</span>)<span style="color:#f92672">.</span>force_encoding(<span style="color:#e6db74">&#39;UTF-8&#39;</span>)
+      length, f <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;§&#34;</span>)
+      results<span style="color:#f92672">[</span>f<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> length
+    <span style="color:#66d9ef">end</span>
+  }
+
+  threads<span style="color:#f92672">.</span>map(<span style="color:#f92672">&amp;</span><span style="color:#e6db74">:join</span>)
+
+  <span style="color:#66d9ef">Process</span><span style="color:#f92672">.</span>waitall
+
+  <span style="color:#66d9ef">return</span> results
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_socket_slave</span>(basepath)
+  parent_socket, child_socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">Socket</span><span style="color:#f92672">.</span>pair(<span style="color:#e6db74">:UNIX</span>, <span style="color:#e6db74">:DGRAM</span>, <span style="color:#ae81ff">0</span>)
+
+  fork <span style="color:#66d9ef">do</span>
+    parent_socket<span style="color:#f92672">.</span>close
+    <span style="color:#66d9ef">while</span> f <span style="color:#f92672">=</span> child_socket<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">500</span>)
+      <span style="color:#66d9ef">break</span> <span style="color:#66d9ef">if</span> f <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;BREAK&#34;</span>
+      lines <span style="color:#f92672">=</span> <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>readlines <span style="color:#66d9ef">File</span><span style="color:#f92672">.</span>join(basepath, f)
+      child_socket<span style="color:#f92672">.</span>send(lines<span style="color:#f92672">.</span>length<span style="color:#f92672">.</span>to_s <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;§&#34;</span> <span style="color:#f92672">+</span> f, <span style="color:#ae81ff">0</span>)
+    <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span>
+
+  <span style="color:#66d9ef">return</span> parent_socket
+<span style="color:#66d9ef">end</span></code></pre></div>
+<p>So, there&rsquo;s a lot of horror here. For each coroutine, we create a pair of joined sockets (Ruby&rsquo;s <code>Socket.pair()</code> makes a syscall to <a href="http://man7.org/linux/man-pages/man2/socketpair.2.html"><code>socketpair(2)</code></a>). One end gets kept by the parent process, and the other by the child process. They then use these to communicate – the parent sending in a list of files for the children to process; the children sending back the results (until they receive the &ldquo;BREAK&rdquo; signal, where they terminate).</p>
+
+<p>(Note that the implementation of these coroutines is very basic. I&rsquo;m using an <code>Enumerator</code> to loop through all the processes round-robin, rather than assigning work to processes that are idle, which would be much more efficient.)</p>
+
+<p>And the results?</p>
+
+<pre><code>$ ruby test.rb ~/Desktop
+...
+System threads and socket IPC - 1.518s
+</code></pre>
+
+<p>Oh well. Thanks for joining my sojourn into concurrency in Ruby!</p>
+
+    </div>
+
+    <ul class="article-taxonomy">
+      
+
+      
+  </article>
+
+  <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://recurse.henrystanley.com/index.xml" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> RSS feed</a>
+          </li>
+          <li>
+            <a href="https://github.com/henryaj/rc"><i class="fa fa-github"></i> Source</a>
+          </li>
+          <li>
+            <a href="mailto:henry@henrystanley.com"> Contact</a>
+          </li>
+          <li>
+            <a href="http://henrystanley.com">henrystanley.com</a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
+
