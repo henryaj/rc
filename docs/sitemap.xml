@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://recurse.henrystanley.com/post/graal-quickstart/</loc>
+    <lastmod>2018-07-30T13:08:37-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://recurse.henrystanley.com/post/concurrent-ruby/</loc>
     <lastmod>2018-07-17T13:41:00-04:00</lastmod>
   </url>
@@ -59,13 +64,13 @@
   
   <url>
     <loc>https://recurse.henrystanley.com/</loc>
-    <lastmod>2018-07-17T13:41:00-04:00</lastmod>
+    <lastmod>2018-07-30T13:08:37-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://recurse.henrystanley.com/post/</loc>
-    <lastmod>2018-07-17T13:41:00-04:00</lastmod>
+    <lastmod>2018-07-30T13:08:37-04:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.42.2" />
+
+
+<title>Getting started with Graal - Henry @ RC S1</title>
+<meta property="og:title" content="Getting started with Graal - Henry @ RC S1">
+
+
+
+  
+
+
+
+<meta property="og:image" content="https://recurse.henrystanley.com/img/logo.jpg">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/main.css" media="all">
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/fonts.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="https://recurse.henrystanley.com/">
+        <svg class="rc-logo" style="max-height:25px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 15">
+          <rect class="rc-logo__primary" x="0" y="0" width="12" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="11" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="9" width="12" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="4" y="9" width="4" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="10" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="14" width="10" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="0" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="4" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="6" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="8" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="9" y="13" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="7" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="5" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="3" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__secondary" x="1" y="1" width="10" height="8" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="2" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="3" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="4" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="5" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="6" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="7" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="8" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="9" y="12" width="1" height="1" fill="#fff"></rect>
+
+          <rect class="rc-logo__primary" x="2" y="2" width="8" height="6" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__accent rc-logo__pixel1" x="2" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel2" x="4" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel3" x="6" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel4" x="3" y="5" width="2" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel5" x="6" y="5" width="2" height="1" fill="#3dc06c"></rect>
+        </svg></a>
+        <nav class="nav">
+  <a href="https://recurse.henrystanley.com/" class="nav-logo">
+    <img src="https://recurse.henrystanley.com/images/" 
+         width="" 
+         height="" 
+         alt="">
+  </a>
+
+  <ul class="nav-links">
+    
+  </ul>
+</nav>
+
+      </header>
+
+<main class="content" role="main">
+  <article class="article">
+
+      <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+    
+    <h1 class="article-title">Getting started with Graal</h1>
+    
+    <span class="article-date">Henry Stanley</span>
+    
+
+    <div class="article-content">
+      
+
+      
+
+<p>GraalVM promises to be <a href="https://www.semanticscholar.org/paper/One-VM-to-rule-them-all-W%C3%BCrthinger-Wimmer/53e2b31ad6fea91655ecbe64fe66968b934d0160">&ldquo;one VM to rule them all&rdquo;</a> – a way to &ldquo;run code faster anywhere&rdquo;.</p>
+
+<p>The way it does this is using language interpreters written in a framework called <a href="https://blog.plan99.net/graal-truffle-134d8f28fb69">Truffle</a>:</p>
+
+<blockquote>
+<p>Truffle is a framework for implementing languages using nothing more than a simple abstract syntax tree interpreter.</p>
+</blockquote>
+
+<p>These interpreters turn your code into an AST which can be run on the GraalVM. This gives you:</p>
+
+<ul>
+<li><strong>super fast performance</strong> – e.g. a fourfold increase in speed over Ruby&rsquo;s VM; similar performance to V8 for JavaScript.</li>
+<li><strong>JIT compilation and debugging for free</strong> – use Chrome DevTools to debug running code.</li>
+<li><strong>interoperability with other Truffle languages</strong> – because multiple languages can target the same VM, you can call code in one language from another with no performance penalty when crossing the language barrier.</li>
+</ul>
+
+<p><a href="https://blog.plan99.net/graal-truffle-134d8f28fb69">This article</a> is an amazing technical introduction to the platform. Below, I&rsquo;ll walk you through getting GraalVM installed and running on your machine.</p>
+
+<h2 id="mac-quickstart">Mac quickstart</h2>
+
+<p>The community edition of Graal only runs on Linux, so if you&rsquo;re using a Mac, you&rsquo;ll need to emulate! Here&rsquo;s how I did it.</p>
+
+<ol>
+<li>Download the latest release of <a href="https://github.com/oracle/graal/releases">Graal</a>.</li>
+
+<li><p>Install Docker, either by <a href="https://download.docker.com/mac/static/stable/x86_64/">downloading it</a> or using Homebrew (<code>brew install docker</code>).</p></li>
+
+<li><p><code>cd</code> into the Graal download directory and start a Docker container as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker run -i -t -v=`pwd`:/graal ubuntu /bin/bash</code></pre></div>
+<p>This will bind-mount your current directory to <code>/graal</code> inside the container. When you&rsquo;re in, you can run <code>cd /graal</code> and use the binaries in there directly.</p></li>
+</ol>
+
+<h2 id="installing-language-packs">Installing language packs</h2>
+
+<p>GraalVM ships with a JVM and its own versions of <code>node</code> and <code>npm</code>, but out of the box you won&rsquo;t be able to run Ruby, Python, or R.</p>
+
+<p>If you&rsquo;re like me, the first thing you want to do is play around with Ruby on GraalVM. To do this, you need to install TruffleRuby. GraalVM comes with its own package management tool, <code>gu</code>, which you can invoke from inside the container:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">root# /graal/bin/gu install ruby
+Downloading: Component catalog
+Processing component archive: Component ruby
+Downloading: Component ruby
+Installing new component: TruffleRuby (org.graalvm.ruby, version 1.0.0-rc4)</code></pre></div>
+<h2 id="using-the-debugger">Using the debugger</h2>
+
+<p>Graal comes with an awesome debugger that lets you step through your code in Chrome DevTools. To do this, you need to allow connections between your container and the host machine.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ docker run -i -t -v=`pwd`:/graal \
+  -p 9229:9229/tcp ubuntu /bin/bash</code></pre></div>
+<p>That <code>-p</code> flag opens a port on <code>9229</code> on both the container and the host. When you run a Graal command and invoke the debugger, you need to tell it to use that port, and to bind to 0.0.0.0 (as by default it binds to 127.0.0.1 which refuses incoming connections from outside the container):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">root# /graal/bin/ruby --inspect=&#34;0.0.0.0:9229&#34; mycode.rb
+Debugger listening on port 9229.
+To start debugging, open the following URL in Chrome:
+    chrome-devtools://devtools/bundled/js_app.html?ws=0.0.0.0:9229/ffffffff84647ae2-ffffffa709c7325d</code></pre></div>
+<p>Graal will print out a URL that you can copy and paste into Chrome which will drop you into a debugger session.</p>
+
+<p><img src="/img/graal-ruby-debug.png" alt="" /></p>
+
+<h2 id="what-next">What next?</h2>
+
+<p>Once you&rsquo;re up and running, check out Chris Seaton&rsquo;s excellent <em><a href="https://chrisseaton.com/truffleruby/tenthings/">Top 10 Things To Do With GraalVM</a></em> for more cool things to try out.</p>
+
+    </div>
+
+    <ul class="article-taxonomy">
+      
+
+      
+  </article>
+
+  <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://recurse.henrystanley.com/index.xml" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> RSS feed</a>
+          </li>
+          <li>
+            <a href="https://github.com/henryaj/rc"><i class="fa fa-github"></i> Source</a>
+          </li>
+          <li>
+            <a href="mailto:henry@henrystanley.com"> Contact</a>
+          </li>
+          <li>
+            <a href="http://henrystanley.com">henrystanley.com</a>
+          </li>
+        </ul>
+        <div style="padding-top: 0.5em; padding-bottom: 0.5em;"><script async defer src="https://www.recurse-scout.com/loader.js?t=63161220f0aa81bde01265259970fd56"></script></div>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
+
