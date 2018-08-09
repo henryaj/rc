@@ -1,3 +1,8 @@
+:root {
+  --headings-font: 'Libre Franklin', sans-serif;
+  --body-font: 'Libre Franklin', serif;
+}
+
 @media (min-width: 600px) {
   div.toc {
     max-width: 50%;
@@ -11,7 +16,7 @@ div.toc {
   border-width: 1px;
   padding: 5px;
   font-size: 15px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--body-font);
 }
 
 nav#TableOfContents > ul {
@@ -28,7 +33,7 @@ body {
 }
 
 body {
-  font-family: 'Merriweather', serif;
+  font-family: var(--body-font);
   -webkit-hyphens: auto;
   hyphens: auto;
 }
@@ -39,7 +44,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   color: #222;
 }
 
@@ -108,7 +113,7 @@ blockquote {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 15px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   text-align: right;
 }
 
@@ -174,7 +179,7 @@ blockquote {
 
 .article-date {
   font-size: 16px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--body-font);
   color: #ccc;
 }
 
@@ -206,7 +211,7 @@ blockquote {
 .article-taxonomy {
   list-style: none;
   padding-left: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   color: #404040;
   font-size: 14px;
   text-align: left;
@@ -269,7 +274,7 @@ blockquote {
 .list-item-date {
   display: block;
   padding: 4px 0;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   color: #ccc;
   font-size: 14px;
 }
@@ -285,7 +290,7 @@ blockquote {
   padding: 3px 0;
   text-decoration: none;
   font-size: 17px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   font-weight: bold;
   color: #222;
   border-bottom: 1px solid #ddd;
@@ -308,14 +313,14 @@ blockquote {
   padding: 5px 0;
   text-decoration: none;
   font-size: 19px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   font-weight: bold;
   color: #222;
   transition: color 300ms;
 }
 
 .category-item-count {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   margin-right: 15px;
   color: #ccc;
   font-size: 14px;
@@ -335,7 +340,7 @@ blockquote {
 
 .tag-cloud-item a {
   text-decoration: none;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   font-weight: bold;
   color: #222;
   transition: color 300ms;
@@ -353,7 +358,7 @@ blockquote {
   margin: 0;
   padding-bottom: 60px;
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--body-font);
 }
 
 .footer-links {
@@ -395,7 +400,7 @@ blockquote {
   margin: 25px 0;
   padding: 0;
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--headings-font);
   font-size: 16px;
 }
 
