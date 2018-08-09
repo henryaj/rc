@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.42.2" />
+
+
+<title>A Buildpack for GraalVM - Henry @ RC S1</title>
+<meta property="og:title" content="A Buildpack for GraalVM - Henry @ RC S1">
+
+
+
+  
+
+
+
+<meta property="og:image" content="https://recurse.henrystanley.com/img/logo.jpg">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/main.css" media="all">
+<link rel="stylesheet" href="https://recurse.henrystanley.com/css/fonts.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="https://recurse.henrystanley.com/">
+        <svg class="rc-logo" style="max-height:25px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 15">
+          <rect class="rc-logo__primary" x="0" y="0" width="12" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="11" y="0" width="1" height="10" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="0" y="9" width="12" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="4" y="9" width="4" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="10" height="1" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="11" width="1" height="4" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="1" y="14" width="10" height="1" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="0" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="10" y="12" width="2" height="3" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="1" y="11" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="4" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="6" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="8" y="11" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__primary" x="9" y="13" width="2" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="7" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="5" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+          <rect class="rc-logo__primary" x="3" y="13" width="1" height="2" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__secondary" x="1" y="1" width="10" height="8" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="2" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="3" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="4" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="5" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="6" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="7" y="12" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="8" y="13" width="1" height="1" fill="#fff"></rect>
+          <rect class="rc-logo__secondary" x="9" y="12" width="1" height="1" fill="#fff"></rect>
+
+          <rect class="rc-logo__primary" x="2" y="2" width="8" height="6" fill="#2a2d2d"></rect>
+
+          <rect class="rc-logo__accent rc-logo__pixel1" x="2" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel2" x="4" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel3" x="6" y="3" width="1" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel4" x="3" y="5" width="2" height="1" fill="#3dc06c"></rect>
+          <rect class="rc-logo__accent rc-logo__pixel5" x="6" y="5" width="2" height="1" fill="#3dc06c"></rect>
+        </svg></a>
+        <nav class="nav">
+  <a href="https://recurse.henrystanley.com/" class="nav-logo">
+    <img src="https://recurse.henrystanley.com/images/" 
+         width="" 
+         height="" 
+         alt="">
+  </a>
+
+  <ul class="nav-links">
+    
+  </ul>
+</nav>
+
+      </header>
+
+<main class="content" role="main">
+  <article class="article">
+
+      <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+    
+    <h1 class="article-title">A Buildpack for GraalVM</h1>
+    
+    <span class="article-date">Henry Stanley</span>
+    
+
+    <div class="article-content">
+      
+
+      
+
+<p>tl;dr: <a href="#instructions">Deploy your Ruby code to Heroku and have it run on GraalVM</a>.</p>
+
+<p>When deploying code in this brave new cloud world we live in, your app pretty much runs as a brain in a vat. It doesn&rsquo;t (and shouldn&rsquo;t) know about the hardware it&rsquo;s running on, how the services it connects to are implemented, how it send data to your log aggregation tool, and so on.<sup class="footnote-ref" id="fnref:12factor"><a href="#fn:12factor">1</a></sup></p>
+
+<p>You get to choose between providing the brain <em>and</em> the vat, or just the brain.</p>
+
+<p>The brain-and-vat option is a <em>container</em>. This lets you specify pretty much everything you want to run: the OS, all the libraries and utilities installed on that OS, and the app code itself. This is what running a <a href="http://docker.com">Docker</a> container looks like (e.g. on Kubernetes or ECS).</p>
+
+<p>The brain-only option is what <a href="http://heroku.com">Heroku</a> and <a href="http://cloudfoundry.org">Cloud Foundry</a> offer. For clarification, please refer to <a href="https://twitter.com/onsijoe/status/598235841635360768">this helpful haiku</a>:</p>
+
+<blockquote>
+<p>Here is my source code<br>
+Run it in the cloud for me<br>
+I do not care how</p>
+</blockquote>
+
+<p>Those platforms take your code, figure out what the hell it is, and then run it for you. In addition to not needing to provide (or even really think about) an OS, it also lets whoever&rsquo;s running your platform make fixes to your app. If a vulnerability is discovered in some system library, for example, the platform operations team can just swap out the base OS for a patched version. If you&rsquo;ve provided them a container to run, though, it&rsquo;s just an opaque blob &ndash; you need to update the image on which your container is based and then rebuild it.</p>
+
+<p>So how do the brain-only providers figure out what you want to run?</p>
+
+<h2 id="buildpacks">Buildpacks</h2>
+
+<p>These are chunks of code that decide:</p>
+
+<ol>
+<li>what kind of app your app is</li>
+<li>how to compile it into something executable</li>
+<li>how to run that executable</li>
+</ol>
+
+<p>These three stages map nicely to the <a href="https://devcenter.heroku.com/articles/buildpack-api">three executables that must be present in a buildpack</a>:</p>
+
+<ul>
+<li><code>bin/detect</code></li>
+<li><code>bin/compile</code></li>
+<li><code>bin/release</code></li>
+</ul>
+
+<h3 id="detect">Detect</h3>
+
+<p>Decides what kind of app you&rsquo;re running. For Ruby, this might be as simple as asking &ldquo;does it have a Gemfile?&rdquo;.</p>
+
+<p>If yes, continue with the compile and release steps. Otherwise, try another buildpack until there are no more left.</p>
+
+<h3 id="compile">Compile</h3>
+
+<p>Turns your app into an executable (a &lsquo;slug&rsquo; in Heroku parlance; a &lsquo;droplet&rsquo; in Cloud Foundry parlance). For Ruby, this means running <code>bundle install</code>; for Go, this means <code>dep ensure &amp;&amp; go build</code>, etc.</p>
+
+<h3 id="release">Release</h3>
+
+<p>Write a <code>Procfile</code> that tells the system how to run your app (e.g. <code>rails server</code>, <code>rackup</code>, <code>npm start</code> etc.)</p>
+
+<h2 id="graalvm">GraalVM</h2>
+
+<p>GraalVM is a VM and a set of interpreters capable of taking various kinds of code (Ruby, Python, R, LLVM bitcode, C, languages that target the JVM like Java and Scala) converting them into some intermediate representation, and running them on a highly-optimised VM (itself written in Java).</p>
+
+<p>It&rsquo;s been in development for several years, and is capable of running Ruby code four times faster than the next-best runtime, provides hooks to debug your code using Chrome DevTools, and provides seamless interoperability between any of these languages with almost zero overhead.</p>
+
+<p>So why can&rsquo;t I push my Ruby code to Heroku and have it run on GraalVM?</p>
+
+<h3 id="instructions-a-id-instructions-a">Instructions<a id="instructions"></a></h3>
+
+<p>The source code is <a href="https://github.com/henryaj/truffleruby-buildpack">here</a>.</p>
+
+<p><strong>To use on Heroku</strong>: run <code>heroku buildpacks:add</code> to add this buildpack to your app, and remove the existing Ruby buildpack. You&rsquo;ll need to have pushed your app at least once before to do this.</p>
+
+<p><strong>To use on Cloud Foundry</strong>: run <code>cf create-buildpack</code> to add this buildpack to CF, then update the buildpack order to ensure it runs before the normal Ruby buildpack.</p>
+
+<p>It&rsquo;s pretty bare bones at the moment – it won&rsquo;t build your Rails asset cache, for example – but it should be okay at getting basic Ruby apps running. Note that <a href="https://github.com/oracle/truffleruby/blob/master/README.md#current-status">TruffleRuby is still incomplete</a>, and is missing support for some important Ruby features (native gems won&rsquo;t work, for example), so YMMV.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:12factor">These principles are all lifted from the concept of <a href="https://12factor.net/">12-factor apps</a>, which are apps that have a clean contract with the underlying OS, and are designed to be portable across clouds.
+ <a class="footnote-return" href="#fnref:12factor"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    </div>
+
+    <ul class="article-taxonomy">
+      
+
+      
+  </article>
+
+  <div><center><small><em>Get a <a href="https://tinyletter.com/henrystanley">once-a-month email</a> with more posts like this.</em></small></center></div>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://recurse.henrystanley.com/index.xml" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> RSS feed</a>
+          </li>
+          <li>
+            <a href="https://github.com/henryaj/rc"><i class="fa fa-github"></i> Source</a>
+          </li>
+          <li>
+            <a href="mailto:henry@henrystanley.com"> Contact</a>
+          </li>
+          <li>
+            <a href="http://henrystanley.com">henrystanley.com</a>
+          </li>
+        </ul>
+        <div style="padding-top: 0.5em; padding-bottom: 0.5em;"><script async defer src="https://www.recurse-scout.com/loader.js?t=63161220f0aa81bde01265259970fd56"></script></div>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
+
