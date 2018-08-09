@@ -1,6 +1,6 @@
 ---
 title: "A Buildpack for GraalVM"
-date: 2018-08-08T12:30:43-04:00
+date: 2018-08-09T12:30:43-04:00
 ---
 
 tl;dr: <a href="#instructions">Deploy your Ruby code to Heroku and have it run on GraalVM</a>.
@@ -65,6 +65,6 @@ The source code is [here](https://github.com/henryaj/truffleruby-buildpack).
 
 **To use on Cloud Foundry**: run `cf create-buildpack` to add this buildpack to CF, then update the buildpack order to ensure it runs before the normal Ruby buildpack.
 
-It's pretty bare bones at the moment – it won't build your Rails asset cache, for example – but it should be okay at getting basic Ruby apps running. Note that TruffleRuby is still incomplete, and is missing support for some important Ruby features, so YMMV.
+It's pretty bare bones at the moment – it won't build your Rails asset cache, for example – but it should be okay at getting basic Ruby apps running. Note that [TruffleRuby is still incomplete](https://github.com/oracle/truffleruby/blob/master/README.md#current-status), and is missing support for some important Ruby features (native gems won't work, for example), so YMMV.
 
 [^12factor]: These principles are all lifted from the concept of [12-factor apps](https://12factor.net/), which are apps that have a clean contract with the underlying OS, and are designed to be portable across clouds.
